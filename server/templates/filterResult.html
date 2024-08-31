@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Booking Filter Results</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .result-item {
+            background: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .result-item:hover {
+            transform: scale(1.02);
+        }
+
+        .result-item p {
+            margin: 5px 0;
+        }
+
+        .result-item span {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .back-button {
+            padding: 10px 20px;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Filtered Bookings</h1>
+        <p>Total Results: {{ result|length }}</p>
+        {% for booking in result %}
+        <div class="result-item">
+            <p><span>Booking ID:</span> {{ booking.id }}</p>
+            <p><span>Check In Date:</span> {{ booking.checkInDate }}</p>
+            <p><span>Check Out Date:</span> {{ booking.checkOutDate }}</p>
+            <p><span>Category:</span> {{ booking.category }}</p>
+            <p><span>Is Confirmed:</span> {{ booking.isConfirmed }}</p>
+            <p><span>Is Paid:</span> {{ booking.isPaid }}</p>
+            <p><span>Is Cancelled:</span> {{ booking.isCancelled }}</p>
+            <p><span>Is Refund:</span> {{ booking.isRefund }}</p>
+        </div>
+        {% endfor %}
+        <button class="back-button" onclick="window.history.back()">Back</button>
+    </div>
+</body>
+
+</html>

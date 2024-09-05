@@ -47,38 +47,10 @@ TEMPLATES = [
     },
 ]
 WSGI_APPLICATION = 'server.wsgi.application'
-# DATABASES = {
-#     'default': dj_database_url.parse(os.environ.get('POSTGRESQLDBURL'))
-# }
-#mongoDB
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         'ENFORCE_SCHEMA': False,
-#         'CLIENT': {
-#             'host': 'mongodb+srv://ogunyankinjohnson:ycec6b1BhTmT8260@dghotel.hlnhm.mongodb.net/?retryWrites=true&w=majority&appName=DGHotel', # Replace with your MongoDB server address
-#             'port': 27017,               # Replace with your MongoDB port if different
-#             'username': 'ogunyankinjohnson', # Replace with your MongoDB username (optional)
-#             'password': 'ycec6b1BhTmT8260', # Replace with your MongoDB password (optional)
-#             'authSource': 'admin', # Replace with your MongoDB authentication database (optional)
-#         },
-#         'NAME': 'DGHotel',
-#     }
-# }
+
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': os.environ.get('MONGODB_HOST'),
-            'port': int(os.environ.get('MONGODB_PORT', 27017)),
-            'username': os.environ.get('MONGODB_USERNAME'),
-            'password': os.environ.get('MONGODB_PASSWORD'),
-            'authSource': os.environ.get('MONGODB_AUTH_SOURCE', 'admin'),
-        },
-        'NAME': os.environ.get('MONGODB_DB_NAME'),
-    }
+    'default': dj_database_url.parse(os.environ.get('POSTGRESQLDBURL'))
 }
 
 
